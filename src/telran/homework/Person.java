@@ -5,8 +5,8 @@ private long id;
 private int birthYear;
 private String email;
 public Person(long id, int birthYear, String email) {
-	setId(id);
-	setbirthYear(birthYear);
+	this.id=id;
+	this.birthYear = birthYear;
 	setEmail(email);
 	
 }
@@ -19,14 +19,9 @@ public int getBirthYear() {
 public String getEmail() {
 	return email;
 }
-public void setId(long id) {
-	this.id = id;
-}
-public void setbirthYear(int birthYear) {
-	this.birthYear = birthYear;
-}
+
 public void setEmail(String email) {
 	this.email = email;
 }
 
-}//blamnnnbjbcnvhsjkkzjhvjskvh
+}

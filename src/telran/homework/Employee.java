@@ -12,7 +12,7 @@ public class Employee extends Person{
 		this.basicSalary = basicSalary;
 		
 	}
-public int computePay() {
+public double computePay() {
 	return basicSalary;
 }
 }

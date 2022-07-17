@@ -16,7 +16,7 @@ private void setWage(int wage) {
 	this.wage = wage;
 }
 @Override
-public int computePay() {
+public double computePay() {
 	return super.computePay() + wage * hours;
 }
 }
