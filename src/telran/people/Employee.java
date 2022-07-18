@@ -1,4 +1,4 @@
-package telran.homework;
+package telran.people;
 
 public class Employee extends Person{
 	private int basicSalary;
@@ -12,7 +12,7 @@ public class Employee extends Person{
 		this.basicSalary = basicSalary;
 		
 	}
-public double computePay() {
+public int computePay() {
 	return basicSalary;
 }
 }

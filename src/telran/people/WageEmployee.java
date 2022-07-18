@@ -1,4 +1,4 @@
-package telran.homework;
+package telran.people;
 
 public class WageEmployee extends Employee{
 	private int wage;
@@ -16,7 +16,7 @@ private void setWage(int wage) {
 	this.wage = wage;
 }
 @Override
-public double computePay() {
+public int computePay() {
 	return super.computePay() + wage * hours;
 }
 }

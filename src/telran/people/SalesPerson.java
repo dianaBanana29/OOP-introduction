@@ -1,4 +1,4 @@
-package telran.homework;
+package telran.people;
 
 public class SalesPerson extends Employee {
 	private int sales;
@@ -18,7 +18,7 @@ public class SalesPerson extends Employee {
 	}
 
 @Override
-public double computePay() {
-	return super.computePay() + Math.round(sales/100*percentPay);
+public int computePay() {
+	return super.computePay() +(int) Math.round(sales/100.0*percentPay);
 }
 }

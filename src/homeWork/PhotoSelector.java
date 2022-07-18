@@ -1,4 +1,4 @@
-package telran.homework;
+package homeWork;
 
 
 	import java.util.Scanner;
