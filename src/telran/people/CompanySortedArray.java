@@ -7,8 +7,8 @@ public class CompanySortedArray extends CompanyArray {
 	protected int getEmployeeIndex(long id) {
 		
 		Person key = new Person(id,0, null);
-		int res = Arrays.binarySearch(this.employees, key);
-		return res;
+		Arrays.binarySearch(this.employees, key);
+		return Arrays.binarySearch(this.employees, key);
 		
 	}
 	@Override
@@ -17,11 +17,11 @@ public class CompanySortedArray extends CompanyArray {
 	if(ind >= 0) {
 		return false;
 	}
-	ind = -ind;
+	ind = -(ind+1);
 	Employee[] tmp = new Employee[employees.length + 1];	
-	System.arraycopy(employees, 0, tmp, 0, ind -1);
-	System.arraycopy(employees, ind-1, tmp, ind, employees.length - (ind-1));
-	tmp[ind-1] = empl;
+	System.arraycopy(employees, 0, tmp, 0, ind);
+	System.arraycopy(employees, ind, tmp, ind + 1, employees.length - ind);
+	tmp[ind] = empl;
 	employees = tmp;
 	return true;
 }
