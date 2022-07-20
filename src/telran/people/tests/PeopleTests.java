@@ -1,4 +1,4 @@
-package telran.people.test;
+package telran.people.tests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,3 +22,4 @@ void salesPersonTest() {
 }
 
 }
+ 

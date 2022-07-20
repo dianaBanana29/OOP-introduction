@@ -1,7 +1,7 @@
 package telran.people;
 
 public class Person implements Comparable<Person>{
-private long id;
+public long id;
 private int birthYear;
 private String email;
 public Person(long id, int birthYear, String email) {

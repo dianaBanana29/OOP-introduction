@@ -83,9 +83,9 @@ package homeWork;
 			// Test 4  All 2015 spring pictures
 			selectPictures("All 2015 spring pictures","");
 			// Test 5. All night pictures (from 18:00 till 24:00)
-			selectPictures("All night pictures (from 18:00 till 24:00)","");
+			selectPictures("All night pictures (from 18:00 till 24:00)","2015(03|04|05.*");
 			// Test 6. All night pictures from Chicago
-			selectPictures("All night pictures from Chicago","")
+			selectPictures("All night pictures from Chicago","Chicago.*_(1(89)|2[0-4]).*");
 			// Test 7. All jpg and png pictures
 			selectPictures(" All jpg and png pictures", "jpg|png$");
 			// Test 8* All pictures taken in dates with equal number of month and day
