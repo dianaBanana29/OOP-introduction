@@ -2,6 +2,9 @@ package telran.people;
 
 import java.util.Arrays;
 
+import telran.people.comparators.PersonAgeComparator;
+import telran.people.comparators.PersonSalaryComparator;
+
 public class CompanyArray implements ICompany {
 protected  Employee[] employees = new Employee[0];
 	@Override
@@ -59,6 +62,19 @@ protected  Employee[] employees = new Employee[0];
 		Employee[]res = Arrays.copyOf(employees, employees.length);
 		Arrays.sort(res);
 		return res;
+	}
+	@Override
+	public Employee[] sortEmployeesByAge() {
+		Employee[] res = Arrays.copyOf(employees, employees.length);
+		Arrays.sort(res, new PersonAgeComparator());
+		return res;
+	}
+	@Override
+	public Employee[] sortEmployeesBySalary() {
+		Employee[] res = Arrays.copyOf(employees, employees.length);
+		Arrays.sort(res, new PersonSalaryComparator());
+		return res;	
+		
 	}
 
 }
