@@ -15,8 +15,14 @@ class StringsTest {
 	}
 	
 	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	void SortStringsasDatestest() {
+		String[] dates = {
+			"12/10/1998","19/09/1984","17/09/1984","29/06/1989"	
+		};
+		String[] expected = {
+				"17/09/1984", "19/09/1984", "29/06/1989","12/10/1998"
+		};
+		assertArrayEquals(expected, Strings.sortStringsasDates(dates));
+ 	}
 
 }
