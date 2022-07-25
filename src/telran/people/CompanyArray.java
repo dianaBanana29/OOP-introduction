@@ -1,6 +1,7 @@
 package telran.people;
 
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 import telran.people.comparators.PersonAgeComparator;
 import telran.people.comparators.PersonSalaryComparator;
@@ -75,6 +76,17 @@ protected  Employee[] employees = new Employee[0];
 		Arrays.sort(res, new PersonSalaryComparator());
 		return res;	
 		
+	}
+	@Override
+	public Employee[] findEmployees(Predicate<Employee> predicate) {
+		Employee[] res = new Employee[employees.length];
+		int ind = 0;
+		for(int i = 0; i < employees.length; i++) {
+		if(predicate.test(employees[i])) {
+			res[ind++] = employees[i];
+		}
+		}
+		return null;
 	}
 
 }
