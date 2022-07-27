@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import telran.people.Person;
 
-public class PersonAgeComparator implements Comparator<Person> {
+public class EmployeeAgeComparator implements Comparator<Person> {
 
 	@Override
 	public int compare(Person p1, Person p2) {

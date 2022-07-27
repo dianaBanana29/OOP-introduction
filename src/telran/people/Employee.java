@@ -15,7 +15,7 @@ public class Employee extends Person{
 		
 	}
 		
-	private void setBasicSalary(int basicSalary) {
+	public void setBasicSalary(int basicSalary) {
 		if(basicSalary < minBasicSalary) {
 			throw new IllegalArgumentException(String.format
 					("%d - less then possible," +"minimal basic salary %d",basicSalary,minBasicSalary));

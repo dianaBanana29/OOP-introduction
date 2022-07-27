@@ -1,43 +1,45 @@
 package telran.people;
 
-import java.util.regex.Pattern;
-
 public class Person implements Comparable<Person>{
-public long id;
-private int birthYear;
-private String email;
-private final String REGEX = "^[\\w.-]+@[\\w.]+\\.[a-zA-Z]{2,}";
-Pattern pattern = Pattern.compile(REGEX);
-public Person(long id, int birthYear, String email) {
-	this.id=id;
-	this.birthYear = birthYear;
-	setEmail(email);
+	private long id;
+	private int birthYear;
+	private String email;
 	
-}
-public long getId() {
-	return id;
-}
-public int getBirthYear() {
-	return birthYear;
-}
-public String getEmail() {
-	return email;
-}
-
-public void setEmail(String email) {
-	if(email!= null) {
-	
-     	if (!pattern.matcher(email).matches()) {
-	          
-     		throw new IllegalArgumentException(String.format("%s - wrong e-mail",email));
-     	}
+	public Person(long id, int birthYear, String email) {
+		this.id = id;
+		this.birthYear = birthYear;
+		setEmail(email);
 	}
-     	this.email = email;
-}
-@Override
-public int compareTo(Person o) {
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		
+		//Regex simplified <first part>@<second part>
+		// <first part> - letter, digit, dot, dash
+		//second part - letter, dot
+		if (email != null && !email.matches(emailRegex())) {
+			throw new IllegalArgumentException(String.format("%s wrong email", email));
+		}
+		this.email = email;
+	}
+	private String emailRegex() {
+		String prefix = "[A-Za-z\\d]([A-Za-z\\d]|[._-][A-Za-z\\d])+";
+		String domain = "[A-Za-z\\d]([A-Za-z\\d]|-[A-Za-z\\d])+(\\.[A-Za-z\\d]([A-Za-z\\d]|-[A-Za-z\\d])+){1,4}";
+		return String.format("(%s)@(%s)", prefix, domain);
+	}
+	public long getId() {
+		return id;
+	}
+	public int getBirthYear() {
+		return birthYear;
+	}
+	@Override
+	public int compareTo(Person o) {
+		
+		return Long.compare(this.id, o.id);
+	}
 	
-	return Long.compare(this.id, o.id);
-}
+	
 
 }

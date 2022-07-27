@@ -1,13 +1,34 @@
 package telran.people;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
-import telran.people.comparators.PersonAgeComparator;
-import telran.people.comparators.PersonSalaryComparator;
+import telran.people.comparators.EmployeeSalaryComparator;
+import telran.people.tests.CompanySortedArrayPredicate;
+import telran.people.comparators.EmployeeAgeComparator;
 
 public class CompanyArray implements ICompany {
 protected  Employee[] employees = new Employee[0];
+private class CompanyIterator implements Iterator<Employee> {
+	int current = 0;
+	@Override
+	public boolean hasNext() {
+	
+		return current < employees.length;
+	}
+
+	@Override
+	public Employee next() {
+		if (!hasNext()) {
+			throw new NoSuchElementException();
+		}
+		return employees[current++];
+		
+	}
+	
+}
 	@Override
 	public boolean addEmployee(Employee empl) {
 		if (getEmployee(empl.getId()) != null) {
@@ -18,6 +39,7 @@ protected  Employee[] employees = new Employee[0];
 		
 		return true;
 	}
+
 	@Override
 	public Employee removeEmployee(long id) {
 		int index = getEmployeeIndex(id);
@@ -64,29 +86,40 @@ protected  Employee[] employees = new Employee[0];
 		Arrays.sort(res);
 		return res;
 	}
+
 	@Override
 	public Employee[] sortEmployeesByAge() {
 		Employee[] res = Arrays.copyOf(employees, employees.length);
-		Arrays.sort(res, new PersonAgeComparator());
+		Arrays.sort(res, new EmployeeAgeComparator());
 		return res;
 	}
+
 	@Override
 	public Employee[] sortEmployeesBySalary() {
 		Employee[] res = Arrays.copyOf(employees, employees.length);
-		Arrays.sort(res, new PersonSalaryComparator());
-		return res;	
-		
+		Arrays.sort(res, new EmployeeSalaryComparator());
+		return res;
 	}
+
 	@Override
 	public Employee[] findEmployees(Predicate<Employee> predicate) {
 		Employee[] res = new Employee[employees.length];
 		int ind = 0;
-		for(int i = 0; i < employees.length; i++) {
-		if(predicate.test(employees[i])) {
-			res[ind++] = employees[i];
+		
+		for (int i = 0; i < employees.length; i++) {
+			if (predicate.test(employees[i])) {
+				res[ind++] = employees[i];
+				
+			}
+			
 		}
-		}
-		return null;
+		return Arrays.copyOf(res, ind);
+	}
+
+	@Override
+	public Iterator<Employee> iterator() {
+		
+		return new CompanyIterator();
 	}
 
 }

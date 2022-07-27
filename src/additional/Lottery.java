@@ -14,7 +14,7 @@ public class Lottery {
 		for(int i = 0;i < playerCombination.length; i++) {
 			table[playerCombination[i]] = playerCombination[i];
 		}
-		for(int i = 0; i <winningCombination.length; i++) {
+		for(int i = 0; i < winningCombination.length; i++) {
 			if(winningCombination[i] == table[winningCombination[i]]) {
 				++count;
 			}

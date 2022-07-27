@@ -8,11 +8,11 @@ public WageEmployee(long id, int birthYear, String email, int basicSalary, int w
 		setWage(wage);
 		setHours(hours);
 	}
-private void setHours(int hours) {
+public void setHours(int hours) {
 	this.hours = hours;
 		
 }
-private void setWage(int wage) {
+public void setWage(int wage) {
 	this.wage = wage;
 }
 @Override
