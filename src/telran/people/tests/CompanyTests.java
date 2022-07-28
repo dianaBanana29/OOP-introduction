@@ -3,6 +3,8 @@ package telran.people.tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -140,16 +142,34 @@ class CompanyTests {
 	@Test
 	void companyIterableTest() {
 		Employee[] expected = {empl1, empl2, empl3};
-		Employee[] res = new Employee[3];
-		int i = 0;
-		for(Employee empl: company) {
-			res[i++] = empl;
-		}
-		if (company instanceof CompanyArray) {
-			Arrays.sort(res);
-		} 
-		assertArrayEquals(expected, res);	
+		Employee[] actual = getSortedEmployeesFromIterating(3);
+		assertArrayEquals(expected, actual);
+		
 	}
 
+	private Employee[] getSortedEmployeesFromIterating(int size) {
+		Employee[] res = new Employee[size];
+		int ind = 0;
+		for(Employee empl: company) {
+			res[ind++] = empl;
+		}
+		if (!(company instanceof CompanySortedArray)) {
+			Arrays.sort(res);
+		}
+		return res;
+	}
+	@Test
+	void NoSuchElementTest() {
+		boolean flException = false;
+		ICompany anotherCompany = new CompanyArray();
+		Iterator<Employee> it = anotherCompany.iterator();
+		try {
+			it.next();
+		} catch(NoSuchElementException e) {
+			flException = true;
+		}
+		assertTrue(flException);
+	}
+	
 	}
 

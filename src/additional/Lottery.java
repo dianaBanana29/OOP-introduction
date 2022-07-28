@@ -7,13 +7,13 @@ public class Lottery {
 	public Lottery(int[] winningCombination) {
 	this.winningCombination = winningCombination;
 	}
-	
 	public int rateCombination(int playerCombination[]) {
 		int count = 0;
 		int[] table = new int[50];
 		for(int i = 0;i < playerCombination.length; i++) {
 			table[playerCombination[i]] = playerCombination[i];
 		}
+		
 		for(int i = 0; i < winningCombination.length; i++) {
 			if(winningCombination[i] == table[winningCombination[i]]) {
 				++count;

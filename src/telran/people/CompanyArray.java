@@ -12,11 +12,11 @@ import telran.people.comparators.EmployeeAgeComparator;
 public class CompanyArray implements ICompany {
 protected  Employee[] employees = new Employee[0];
 private class CompanyIterator implements Iterator<Employee> {
-	int current = 0;
+	int currentInd = 0;
 	@Override
 	public boolean hasNext() {
 	
-		return current < employees.length;
+		return currentInd < employees.length;
 	}
 
 	@Override
@@ -24,7 +24,7 @@ private class CompanyIterator implements Iterator<Employee> {
 		if (!hasNext()) {
 			throw new NoSuchElementException();
 		}
-		return employees[current++];
+		return employees[currentInd++];
 		
 	}
 	
