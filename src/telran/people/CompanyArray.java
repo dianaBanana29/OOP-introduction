@@ -4,11 +4,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
-
-import telran.people.comparators.EmployeeSalaryComparator;
-import telran.people.tests.CompanySortedArrayPredicate;
-import telran.people.comparators.EmployeeAgeComparator;
-
 public class CompanyArray implements ICompany {
 protected  Employee[] employees = new Employee[0];
 private class CompanyIterator implements Iterator<Employee> {
@@ -90,14 +85,14 @@ private class CompanyIterator implements Iterator<Employee> {
 	@Override
 	public Employee[] sortEmployeesByAge() {
 		Employee[] res = Arrays.copyOf(employees, employees.length);
-		Arrays.sort(res, new EmployeeAgeComparator());
+		Arrays.sort(res, (a1, a2)-> a2.getBirthYear() - a1.getBirthYear());
 		return res;
 	}
 
 	@Override
 	public Employee[] sortEmployeesBySalary() {
 		Employee[] res = Arrays.copyOf(employees, employees.length);
-		Arrays.sort(res, new EmployeeSalaryComparator());
+		Arrays.sort(res, (s1, s2)-> s1.computePay() - s2.computePay());
 		return res;
 	}
 

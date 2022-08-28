@@ -4,9 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import telran.numbers.EvenNumbersPredicate;
-import telran.numbers.OddNumbersPredicate;
 import telran.numbers.Range;
 
 class RangeTest {
@@ -33,11 +30,11 @@ class RangeTest {
 	void iterablePredicateTest() {
 		//Test for HW #12
 		int expected[] = {2};
-		range.setPredicate(new EvenNumbersPredicate());
+		range.setPredicate(num -> num%2 == 0);
 		int actual[] = getActualArray(1);
 		assertArrayEquals(expected, actual);
 		int expectedOdd[] = {1, 3};
-		range.setPredicate(new OddNumbersPredicate());
+		range.setPredicate(num -> num%2 == 1);
 		actual = getActualArray(2);
 		assertArrayEquals(expectedOdd, actual);
 	}

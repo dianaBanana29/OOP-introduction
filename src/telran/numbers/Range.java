@@ -34,7 +34,7 @@ private Integer getFirst() {
 
 		private Predicate<Integer> getIteratorPredicate() {
 			
-			return predicate == null ? new AllNumbersPredicate() : predicate;
+			return predicate == null ?num -> true : predicate;
 		}
 
 		@Override
